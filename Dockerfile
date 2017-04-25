@@ -8,6 +8,7 @@ RUN mv /flyway-${FLYWAY_VERSION} /flyway
 
 FROM debian AS runtime-env
 COPY --from=extract-env /flyway /flyway 
+RUN ln -s /flyway/flyway /usr/local/bin/flyway
 # treat this image as a flyway command
 ENTRYPOINT ["/flyway/flyway"]
 # by default run flyway --help
